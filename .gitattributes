@@ -1,4 +1,4 @@
 
-*.glsl linguist-language=GLSL
-*.vert linguist-language=GLSL
-*.frag linguist-language=GLSL
+*.glsl linguist-language=true
+*.vert linguist-language=true
+*.frag linguist-language=true
