@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
 #include "window.h"
@@ -180,14 +183,18 @@ int main() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float))); // set the vertex attribute pointer
     glEnableVertexAttribArray(1); // enable the vertex attribute array
 
+    // srand((unsigned int)time(NULL));
     while(!glfwWindowShouldClose(window)) {
         // -- Input -- //
         process_input(window);
 
         // -- Style -- //
-        glClearColor(0.8f, 0.8f, 0.8f, 0.5f);
+        glClearColor(0.4, 0.4, 0.4, 0.5f); // set the clear color
         glClear(GL_COLOR_BUFFER_BIT);
 
+        float time_value = glfwGetTime();
+        int time_location = glGetUniformLocation(shader_program, "timeValue");
+        glUniform1f(time_location, time_value);
 
         // -- Render -- //
         glUseProgram(shader_program); // use the shader program
